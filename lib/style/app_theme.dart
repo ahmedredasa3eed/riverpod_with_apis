@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_shop/utils/app_colors.dart';
+import 'package:go_shop/style/app_colors.dart';
 
 class AppTheme {
   final ThemeData basicTheme = ThemeData(
