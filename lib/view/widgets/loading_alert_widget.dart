@@ -5,7 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoadingAndAlertWidget extends ConsumerWidget {
   @override
-  Widget build(BuildContext context , watch) {
+  Widget build(BuildContext context, watch) {
+
     final loadingProvider = watch(loadingStateProvider);
     final snackBarProvider = watch(snackBarStateProvider);
 
@@ -16,7 +17,8 @@ class LoadingAndAlertWidget extends ConsumerWidget {
       );
     }
     return loadingProvider.state
-        ? Stack(
+        ?
+    Stack(
             children: [
               Container(
                 color: Colors.black12,
@@ -27,9 +29,9 @@ class LoadingAndAlertWidget extends ConsumerWidget {
                   children: [
                     CircularProgressIndicator(),
                     SizedBox(
-                      width: 24,
+                      width: 20,
                     ),
-                    Text('Loading...'),
+                    Text('جاري التحميل ...'),
                   ],
                 ),
               ),

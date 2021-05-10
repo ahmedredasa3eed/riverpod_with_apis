@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_shop/utils/text_styles.dart';
+import 'package:go_shop/style/text_styles.dart';
 
 class AuthAppBarTitle extends StatelessWidget {
   final String title;

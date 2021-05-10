@@ -1,47 +1,68 @@
 import 'package:go_shop/entities/snack_bar_entity.dart';
-import 'package:go_shop/model/auth/auth_model.dart';
-import 'package:go_shop/model/categories/categories_api_response.dart';
-import 'package:go_shop/network/auth_services.dart';
-import 'package:go_shop/network/categories_services.dart';
-import 'package:go_shop/view_models/categories_view_model.dart';
-import 'package:go_shop/view_models/login_view_model.dart';
-import 'package:go_shop/view_models/splash_view_model.dart';
+import 'package:go_shop/network/api/banners/banners_service.dart';
+import 'package:go_shop/network/api/categories/categories_services.dart';
+import 'package:go_shop/network/api/contact/contact_service.dart';
+import 'package:go_shop/network/api/favourite/favourite_service.dart';
+import 'package:go_shop/network/api/home/home_data_service.dart';
+import 'package:go_shop/network/api/products/products_service.dart';
+import 'package:go_shop/network/api/user/auth_services.dart';
+import 'package:go_shop/view_models/auth/auth_view_model.dart';
+import 'package:go_shop/view_models/banners_view_model/banners_view_model.dart';
+import 'package:go_shop/view_models/category_view_model/category_view_model.dart';
+import 'package:go_shop/view_models/contact_view_model/contact_view_model.dart';
+import 'package:go_shop/view_models/favourite_view_model/favourite_view_model.dart';
+import 'package:go_shop/view_models/home_view_model/home_data_view_model.dart';
+import 'package:go_shop/view_models/products_view_model/products_view_model.dart';
+import 'package:go_shop/view_models/splash_view_model/splash_view_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
-/// Login View Provider
-final loginViewModelProvider = ChangeNotifierProvider<LoginViewModel>(
-        (ref) => LoginViewModel(ref.read));
-
-/// Login Status
-final userAuthStatusProvider = StateProvider<Auth>((ref) => Auth());
-
-/// Login Services Provider
-final userAuthNotifier = ChangeNotifierProvider<AuthServices>((ref) => AuthServices());
-
-
-/// Splash View Provider
-final splashProvider = ChangeNotifierProvider<SplashChangeNotifier>((_) => SplashChangeNotifier());
-
 /// Snack bar provider
 final snackBarStateProvider = StateProvider<SnackBarEntity>(
-  (_) => SnackBarEntity.initial(),
+        (_) => SnackBarEntity.initial(),
 );
 
 /// Loading provider
 final loadingStateProvider = StateProvider<bool>((_) => false);
 
-/// Loading Button provider
-final loadingButtonStateProvider = StateProvider<bool>((_) => false);
+/// Login Services Provider
+final authServiceProvider = Provider<AuthService>((ref) => AuthService());
+
+/// Login View Provider
+final authViewModelProvider = ChangeNotifierProvider<AuthViewModel>((ref) => AuthViewModel(ref.read));
 
 
-/// Categories Response api status Services Provider
-final categoriesResponseStatusProvider = StateProvider<CategoriesApiResponse>((ref) => CategoriesApiResponse());
+
+/// Splash View Provider
+final splashProvider = ChangeNotifierProvider<SplashScreenViewModel>((_) => SplashScreenViewModel());
 
 
-/// Categories Data Provider
-final categoriesServiceProvider = ChangeNotifierProvider<CategoriesServices>((ref) => CategoriesServices());
+
+/// Home data Providers
+final homeServiceProvider = Provider<HomeDataServices>((ref) => HomeDataServices());
+final homeViewModelProvider = ChangeNotifierProvider<HomeDataViewModel>((ref) => HomeDataViewModel(ref.read));
 
 
-final categoriesProvider = ChangeNotifierProvider<CategoriesViewModel>(
-        (ref) => CategoriesViewModel(ref.read));
+/// Contacts data Providers
+final contactServiceProvider = Provider<ContactService>((ref) => ContactService());
+final contactViewModelProvider = ChangeNotifierProvider<ContactsViewModel>((ref) => ContactsViewModel(ref.read));
+
+
+/// Favourite data Providers
+final favouriteServiceProvider = Provider<FavouriteService>((ref) => FavouriteService());
+final favouriteViewModelProvider = ChangeNotifierProvider<FavouriteViewModel>((ref) => FavouriteViewModel(ref.read));
+
+
+
+/// Category data Providers
+final categoryServiceProvider = Provider<CategoriesServices>((ref) => CategoriesServices());
+final categoryViewModelProvider = ChangeNotifierProvider<CategoryViewModel>((ref) => CategoryViewModel(ref.read));
+
+
+/// Products data Providers
+final productServiceProvider = Provider<ProductsService>((ref) => ProductsService());
+final productViewModelProvider = ChangeNotifierProvider<ProductsViewModel>((ref) => ProductsViewModel(ref.read));
+
+/// Banners data Providers
+final bannersServiceProvider = Provider<BannersServices>((ref) => BannersServices());
+final bannersViewModelProvider = ChangeNotifierProvider<BannersViewModel>((ref) => BannersViewModel(ref.read));

@@ -19,7 +19,7 @@ class _ImageInputState extends State<ImageInput> {
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _takeImage() async {
-    final pickedImage = await _picker.getImage(source: ImageSource.gallery,imageQuality:50);
+    final pickedImage = await _picker.getImage(source: ImageSource.gallery,imageQuality:20);
 
     if(pickedImage == null){
       return;

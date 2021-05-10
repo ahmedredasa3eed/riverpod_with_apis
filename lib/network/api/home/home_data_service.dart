@@ -1,7 +1,7 @@
 import 'package:go_shop/model/home/home_data_model.dart';
 import 'package:go_shop/network/api/api_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'api/api_client.dart';
+import '../api_client.dart';
 
 class HomeDataServices {
   final _apiClient = ApiClient();

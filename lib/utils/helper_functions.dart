@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'enums.dart';
 
 class HelperFunctions {
+
   const HelperFunctions._();
 
   static bool isEnglish(BuildContext context) =>
@@ -27,7 +28,7 @@ class HelperFunctions {
               snackBarEntity.message,
               style: TextStyle(color: Colors.white),
             ),
-            duration: const Duration(seconds: 2),
+            duration: const Duration(seconds: 1),
           ),
         );
         context.read(snackBarStateProvider).state = SnackBarEntity.reset();

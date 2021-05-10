@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
-class CategoriesModel extends ChangeNotifier {
+class CategoriesModel {
   bool status;
-  Null message;
+  String message;
   Data data;
 
   CategoriesModel({this.status, this.message, this.data});
@@ -26,7 +24,7 @@ class CategoriesModel extends ChangeNotifier {
 
 class Data {
   int currentPage;
-  List<CategoryItem> categoryItem;
+  List<CategoryModel> categories;
   String firstPageUrl;
   int from;
   int lastPage;
@@ -40,7 +38,7 @@ class Data {
 
   Data(
       {this.currentPage,
-        this.categoryItem,
+        this.categories,
         this.firstPageUrl,
         this.from,
         this.lastPage,
@@ -55,9 +53,9 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      categoryItem = new List<CategoryItem>();
+      categories = [];
       json['data'].forEach((v) {
-        categoryItem.add(new CategoryItem.fromJson(v));
+        categories.add(new CategoryModel.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -75,8 +73,8 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['current_page'] = this.currentPage;
-    if (this.categoryItem != null) {
-      data['data'] = this.categoryItem.map((v) => v.toJson()).toList();
+    if (this.categories != null) {
+      data['data'] = this.categories.map((v) => v.toJson()).toList();
     }
     data['first_page_url'] = this.firstPageUrl;
     data['from'] = this.from;
@@ -92,14 +90,14 @@ class Data {
   }
 }
 
-class CategoryItem {
+class CategoryModel {
   int id;
   String name;
   String image;
 
-  CategoryItem({this.id, this.name, this.image});
+  CategoryModel({this.id, this.name, this.image});
 
-  CategoryItem.fromJson(Map<String, dynamic> json) {
+  CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     image = json['image'];

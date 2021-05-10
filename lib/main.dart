@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_shop/view/screens/home_view.dart';
+import 'package:go_shop/view/screens/login/login_screen.dart';
 import 'package:go_shop/view/screens/splash/splash_screen.dart';
 
 void main() async{
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeView(),
+        home: SplashScreen(),
       ),
     );
   }

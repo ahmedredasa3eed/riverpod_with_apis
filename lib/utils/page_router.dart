@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_shop/utils/enums.dart';
-import 'package:go_shop/view/widgets/routed_screen.dart';
+import 'package:go_shop/utils/routed_screen.dart';
 
 class PageRouter {
   const PageRouter._();
@@ -32,7 +32,7 @@ class PageRouter {
     AppTransition transition,
   }) {
     return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 700),
+      transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, _) {
         return RoutedScreen(
           animation: animation,

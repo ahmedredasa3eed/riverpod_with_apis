@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart' as lang;
-import 'package:go_shop/utils/app_colors.dart';
-import 'package:go_shop/utils/app_padding.dart';
-import 'package:go_shop/utils/decorations.dart';
+import 'package:go_shop/style/app_colors.dart';
+import 'package:go_shop/style/app_padding.dart';
+import 'package:go_shop/style/decorations.dart';
+import 'package:go_shop/utils/enums.dart';
 import 'package:go_shop/utils/helper_functions.dart';
 import 'package:go_shop/utils/images.dart';
-import 'package:go_shop/utils/text_styles.dart';
+import 'package:go_shop/style/text_styles.dart';
 import 'package:go_shop/view/screens/login/widgets/middle_buttons.dart';
 import 'package:go_shop/view/widgets/loading_alert_widget.dart';
 import 'package:go_shop/view/widgets/auth_bar_title.dart';
@@ -16,13 +17,33 @@ import 'package:go_shop/view/widgets/circle_button.dart';
 import 'package:go_shop/view/widgets/email_field.dart';
 import 'package:go_shop/view/widgets/password_field.dart';
 
-class LoginScreen extends HookWidget {
+class LoginScreen extends StatefulWidget {
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailNode = FocusNode();
+  final passwordNode = FocusNode();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    emailNode.dispose();
+    passwordNode.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final emailNode = useFocusNode();
-    final passwordNode = useFocusNode();
+    //final emailController = useTextEditingController();
+    //final passwordController = useTextEditingController();
+    //final emailNode = useFocusNode();
+    //final passwordNode = useFocusNode();
 
     return Stack(
       children: [
@@ -66,6 +87,7 @@ class LoginScreen extends HookWidget {
                         passwordController: passwordController,
                         emailNode: emailNode,
                         passwordNode: passwordNode,
+                        authType: AuthType.login,
                       ),
                       // TODO: Forgot Password
                       SizedBox(

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:go_shop/utils/app_colors.dart';
+import 'package:go_shop/style/app_colors.dart';
 import 'package:go_shop/utils/enums.dart';
 import 'package:go_shop/utils/helper_functions.dart';
-import 'package:go_shop/utils/text_styles.dart';
+import 'package:go_shop/utils/page_router.dart';
+import 'package:go_shop/style/text_styles.dart';
+import 'package:go_shop/view/screens/register/register.dart';
 import 'package:go_shop/view/widgets/custom_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -20,7 +22,7 @@ class MiddleButtons extends HookWidget {
 
   const MiddleButtons({
     Key key,
-    this.authType = AuthType.login,
+    this.authType,
     this.emailNode,
     this.passwordNode,
     this.passwordController,
@@ -39,8 +41,11 @@ class MiddleButtons extends HookWidget {
           Expanded(
             child: CustomButton(
               onPressed: () {
+
                 if (authType == AuthType.register) {
                   // Get.off(() => RegisterPage());
+                  PageRouter.pushReplacementScreen(
+                      context: context, screen: RegisterView());
                   print("register button clicked");
                 }
               },
@@ -67,7 +72,7 @@ class MiddleButtons extends HookWidget {
                 if (authType == AuthType.login) {
                   emailNode.unfocus();
                   passwordNode.unfocus();
-                  context.read(loginViewModelProvider).login(
+                  context.read(authViewModelProvider).login(
                         email: emailController.text,
                         password: passwordController.text,
                         context: context,
